@@ -68,14 +68,6 @@ if type -q starship && type -q fish
     end
 end
 
-if test -d ~/.myconf
-    function config --wraps git --description 'alias for dotfiles repo'
-        git --git-dir=$HOME/.myconf/ --work-tree=$HOME $argv
-    end
-
-    config config status.showUntrackedFiles no
-end
-
 abbr !! sudo vf
 
 abbr dps docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}"
