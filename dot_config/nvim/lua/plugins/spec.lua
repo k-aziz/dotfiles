@@ -28,17 +28,13 @@ return {
     },
   },
 
-  --   -- Install LSP servers, DAP servers, linters, and formatters
-  --   {
-  --     "williamboman/mason.nvim",
-  --     opts = {
-  --       ensure_installed = {
-  --         "codelldb",
-  --         "stylua",
-  --         "shellcheck",
-  --         "shfmt",
-  --         "ruff",
-  --       },
-  --     },
-  --   },
+  -- Enable codelens
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      codelens = {
+        enabled = true,
+      },
+    },
+  },
 }
