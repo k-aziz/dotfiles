@@ -17,10 +17,46 @@ config.font_size = 14
 
 config.color_scheme = "duskfox"
 
-config.window_background_opacity = 0.9
-
 config.use_fancy_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = true
+config.inactive_pane_hsb = {
+	saturation = 0.7,
+	brightness = 0.4,
+}
+
+local dimmer = { brightness = 0.05 }
+local attachment = "Fixed"
+local repeat_x = "NoRepeat"
+local bg_file = wezterm.config_dir .. "/backgrounds/wez-bg.jpg"
+
+-- Events
+wezterm.on("toggle-opacity", function(window)
+	local overrides = window:get_config_overrides() or {}
+	if wezterm.GLOBAL.background_empty == true then
+		overrides.background = {
+			{
+				source = { File = bg_file },
+				attachment = attachment,
+				repeat_x = repeat_x,
+				hsb = dimmer,
+				opacity = 0.5,
+			},
+		}
+		wezterm.GLOBAL.background_empty = false
+	else
+		wezterm.GLOBAL.background_empty = true
+		overrides.background = {
+			{
+				source = { File = bg_file },
+				attachment = attachment,
+				repeat_x = repeat_x,
+				hsb = dimmer,
+				opacity = 1,
+			},
+		}
+	end
+	window:set_config_overrides(overrides)
+end)
 
 -- Keybinds
 local act = wezterm.action
@@ -112,6 +148,12 @@ config.keys = {
 				window:perform_action(wezterm.action.CloseCurrentTab({ confirm = false }), pane)
 			end
 		end),
+	},
+	-- Toggle Transparency
+	{
+		key = "o",
+		mods = "CMD|SHIFT",
+		action = act.EmitEvent("toggle-opacity"),
 	},
 }
 

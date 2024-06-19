@@ -3,6 +3,7 @@ set -Ux PYENV_ROOT $HOME/.pyenv
 fish_add_path -g ~/.local/bin
 fish_add_path -g /opt/homebrew/bin
 fish_add_path -g /opt/homebrew/sbin
+fish_add_path -g /usr/local/opt/gnu-sed/libexec/gnubin
 fish_add_path -g /usr/local/sbin
 fish_add_path -g $PYENV_ROOT/bin
 fish_add_path -g $CARGO_HOME/bin
@@ -41,6 +42,14 @@ if type -q fzf
     # variables = "option + v"
     fzf_configure_bindings --directory=ƒ --git_log=¬ --git_status=ß --processes=π \
         --history=® --variables=√
+
+    if type -q eza
+        set fzf_preview_dir_cmd eza --tree --color=always
+    end
+
+    if type -q delta
+        set fzf_diff_highlighter delta --paging=never --width=20 --no-gitconfig
+    end
 end
 
 if type -q pyenv
