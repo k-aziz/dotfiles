@@ -90,3 +90,5 @@ abbr gsw git switch
 
 abbr kbp kubectl get pods
 abbr kbx kubectl exec -it
+
+abbr lg lazygit
