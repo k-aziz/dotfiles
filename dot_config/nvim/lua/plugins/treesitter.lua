@@ -25,4 +25,14 @@ return {
       "yaml",
     },
   },
+
+  -- Enable codelens
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      codelens = {
+        enabled = true,
+      },
+    },
+  },
 }
