@@ -29,6 +29,16 @@ local attachment = "Fixed"
 local repeat_x = "NoRepeat"
 local bg_file = wezterm.config_dir .. "/backgrounds/wez-bg.jpg"
 
+config.background = {
+	{
+		source = { File = bg_file },
+		attachment = attachment,
+		repeat_x = repeat_x,
+		hsb = dimmer,
+		opacity = 1,
+	},
+}
+
 -- Events
 wezterm.on("toggle-opacity", function(window)
 	local overrides = window:get_config_overrides() or {}

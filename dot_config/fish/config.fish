@@ -79,7 +79,7 @@ end
 
 abbr !! sudo vf
 
-abbr dps docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}"
+abbr dps 'docker ps -a --format "table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}"'
 
 abbr ga git add
 abbr gb git branch
