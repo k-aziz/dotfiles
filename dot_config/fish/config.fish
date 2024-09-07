@@ -1,13 +1,27 @@
 set -Ux PYENV_ROOT $HOME/.pyenv
 
+switch (uname -m)
+    case x86_64
+        set -g HOMEBREW_INSTALL_PATH /usr/local/bin
+
+        fish_add_path -g /usr/local/sbin
+    case aarch_64
+        set -g HOMEBREW_INSTALL_PATH /opt/homebrew/
+
+        fish_add_path -g $HOMEBREW_INSTALL_PATH/bin
+        fish_add_path -g $HOMEBREW_INSTALL_PATH/sbin
+
+end
+
+
 fish_add_path -g ~/.local/bin
-fish_add_path -g /opt/homebrew/bin
-fish_add_path -g /opt/homebrew/sbin
 fish_add_path -g /usr/local/opt/gnu-sed/libexec/gnubin
-fish_add_path -g /usr/local/sbin
 fish_add_path -g $PYENV_ROOT/bin
 fish_add_path -g $CARGO_HOME/bin
 fish_add_path -g $GOPATH/bin
+
+set -gx LDFLAGS -L$HOMEBREW_INSTALL_PATH/llvm/lib
+set -gx CPPFLAGS -I$HOMEBREW_INSTALL_PATH/llvm/include
 
 set -gx EDITOR nvim
 
@@ -16,6 +30,8 @@ set -g fish_greeting
 
 # Allow installing casks in non-admin systems
 set -gx HOMEBREW_CASK_OPTS --appdir=~/Applications
+
+
 
 if type -q bat
     abbr cat bat
