@@ -5,7 +5,7 @@ switch (uname -m)
         set -g HOMEBREW_INSTALL_PATH /usr/local/bin
 
         fish_add_path -g /usr/local/sbin
-    case aarch_64
+    case aarch_64 arm64
         set -g HOMEBREW_INSTALL_PATH /opt/homebrew/
 
         fish_add_path -g $HOMEBREW_INSTALL_PATH/bin
