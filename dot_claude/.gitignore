@@ -1,0 +1,25 @@
+# Local-machine-only state, secrets, caches. Everything else under
+# dot_claude/ (agents, commands, hooks, skills, CLAUDE.md, settings.json)
+# is transferable config and stays tracked.
+
+.credentials.json
+.caveman-*
+.ponytail-*
+.last-cleanup
+.last-update-result.json
+history.jsonl
+backups/
+cache/
+daemon/
+daemon.lock
+daemon.log
+daemon.status.json
+downloads/
+file-history/
+jobs/
+plugins/
+projects/
+session-env/
+sessions/
+shell-snapshots/
+skills/synced/
